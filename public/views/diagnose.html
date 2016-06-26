@@ -1,0 +1,39 @@
+<div class="ui grid" ng-init="init()">
+    <div class="six wide column">
+        <h3>Trainer</h3>
+        <div class="ui form" >
+          <fieldset>
+              <legend>Symptoms</legend>
+              <div class="field">
+                <input type="text" name="first-name" placeholder="Add symptom" ng-model="symptom" ng-keypress="add_symptom($event)">
+              </div>
+              <ul class="ui list" style="max-height: 50px;overflow-y: scroll;">
+                  <li ng-repeat="symptom in symptoms">{{symptom}}</li>
+              </ul>
+          </fieldset>
+            <fieldset>
+              <legend>Diagnoses</legend>
+              <div class="field">
+                <input type="text" ng-model="diagnose" placeholder="Enter final diagnose">
+              </div>
+              <div class="field">
+                <label>Comment</label>
+                <textarea rows="2" ng-model="comment"></textarea>
+              </div>
+            </fieldset>
+          <button style="margin-top: 10px" class="ui right floated button" ng-click="create_diagnose();">Done</button>
+        </div>
+    </div>
+    <div class="five wide column">
+        <h3 style="margin-bottom: 23px">Likely diagnoses</h3>
+        <div ng-repeat="likely_diagnose in likely_diagnoses" >
+            <div class="ui raised segment"  style="margin-bottom: 10px;box-shadow: 2px 4px 5px black;opacity: 0.8">
+                <div class="ui fluid grid">
+                    <div class="sixteen wide column">
+                        <p style="color: black">{{likely_diagnose.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
