@@ -1,2 +1,2 @@
 # Physician Assistant
-A platform that allow Doctors to train an disease diagnose assistant
+A platform that allows Doctors to train an disease diagnose assistant
