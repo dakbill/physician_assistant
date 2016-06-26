@@ -25,7 +25,7 @@ def get_likely_diagnose():
 @app.route('/api/diagnose', methods=['POST'])
 def create_diagnose():
     data = request.get_json()
-    graph.run("CREATE (d:Diagnose {name:'%s'}), %s " % (data.get('diagnose'), ','.join(["(s%d:Symptom{description:'%s'}), s%d-[r%d:IS_SYMPTOM_OF]->d" % (i, str(s).lower(), i, i) for i, s in enumerate(data.get('symptoms'), 1)])))
+    graph.run("MERGE (d:Diagnose {name:'%s'}) MERGE %s " % (data.get('diagnose'), ' MERGE '.join(["(s%d:Symptom{description:'%s'}) MERGE s%d-[r%d:IS_SYMPTOM_OF]->d" % (i, str(s).lower(), i, i) for i, s in enumerate(data.get('symptoms'), 1)])))
     return jsonify({'code': 0, 'message': 'Success', 'results': {}})
 
 
